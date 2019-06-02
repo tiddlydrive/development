@@ -194,7 +194,7 @@
 
   setupSaver();
   $('.modal').modal();
-  $('.modal').modal({"onShow": function(){
+  $('.modal').modal({"onOpenEnd": function(){
 	    		$('ul.tabs').tabs('select_tab', 'options');
     		    }});
   $(document).ready(function(){
