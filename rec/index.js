@@ -193,8 +193,7 @@
   }
 
   setupSaver();
-  $('.modal').modal();
-  $('.modal').modal({"onOpenEnd": function(){
+  $('.modal').modal({"ready": function(){
 	    		$('ul.tabs').tabs('select_tab', 'options');
     		    }});
   $(document).ready(function(){
