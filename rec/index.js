@@ -194,14 +194,14 @@
 
   setupSaver();
   $('.modal').modal();
+  $('.modal').modal({"onShow": function(){
+	    		$('ul.tabs').tabs('select_tab', 'options');
+    		    }});
   $(document).ready(function(){
     if (!is_prod()) {
       $('#nonprod-warning').modal('open');
     }
-    $('ul.tabs').tabs({"onShow": function(){
-	    				$('ul.tabs').tabs('select_tab', 'options');
-    				}
-    		      });
+    $('ul.tabs').tabs();
   });
   $('#hide-fab').click(function(){
     $('#open-settings').hide();
