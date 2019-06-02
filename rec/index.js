@@ -198,8 +198,10 @@
     if (!is_prod()) {
       $('#nonprod-warning').modal('open');
     }
-    $('ul.tabs').tabs();
-    $('ul.tabs').tabs('select_tab', 'options');
+    $('ul.tabs').tabs({"onShow": function(){
+	    				$('ul.tabs').tabs('select_tab', 'options');
+    				}
+    		      });
   });
   $('#hide-fab').click(function(){
     $('#open-settings').hide();
