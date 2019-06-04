@@ -23,7 +23,7 @@
    *  listeners.
    */
 
-  function onErrorClient(e) {
+  function onError(e) {
    showWarning("Error", "<span>Please ensure that you have allowed popups</span><br><br><b>Error message:</b><pre>" + $('<div>').text(JSON.stringify(e, null, 2)).html() + "</pre>"); 
   }
 
@@ -50,7 +50,7 @@
     if (isSignedIn) {
       fetch_file();
     } else {
-      gapi.auth2.getAuthInstance().signIn().error(onClientError);
+      gapi.auth2.getAuthInstance().signIn().error(onError);
     }
   }
 
