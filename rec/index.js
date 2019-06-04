@@ -15,7 +15,7 @@
    *  On load, called to load the auth2 library and API client library.
    */
   window.handleClientLoad = function() {
-    gapi.load('client:auth2', {callback:initClient, onError:onErrorClient);
+    gapi.load('client:auth2', {callback:initClient, onError:onErrorClient});
   }
 
   /**
@@ -24,7 +24,7 @@
    */
 
   function onErrorClient(e) {
-   showWarning("Error", "<span>Please ensure that you have allowed popups</span><br><br><b>Error message:</b><pre>" + $('<div>').text(JSON.stringify(e, null, 2)).html() + "</pre>"}); 
+   showWarning("Error", "<span>Please ensure that you have allowed popups</span><br><br><b>Error message:</b><pre>" + $('<div>').text(JSON.stringify(e, null, 2)).html() + "</pre>"); 
   }
 
   function initClient() {
