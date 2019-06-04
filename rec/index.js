@@ -30,7 +30,7 @@
     } catch (er) {}
 
     var span = "";
-    if (0 < code.indexOf("popup")) {
+    if (-1 < code.indexOf("popup")) {
       span = "Please ensure that you have allowed popups";
     }
     showWarning("Error", "<span>" + span + "</span><br><br><b>Error message:</b><pre>" + $('<div>').text(JSON.stringify(e, null, 2)).html() + "</pre>"); 
@@ -97,7 +97,7 @@
   function showWarning(title, body) {
     $("#dlg-warning-title").text(title);
     $("#dlg-warning-body").html(body);
-    $("#dlg-warning").model("open");
+    $("#dlg-warning").modal("open");
   }
 
   // *****************
