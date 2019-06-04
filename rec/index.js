@@ -15,7 +15,7 @@
    *  On load, called to load the auth2 library and API client library.
    */
   window.handleClientLoad = function() {
-    gapi.load('client:auth2', {callback:initClient, onerror:onErrorClient});
+    gapi.load('client:auth2', {callback:initClient});
   }
 
   /**
@@ -50,7 +50,7 @@
     if (isSignedIn) {
       fetch_file();
     } else {
-      gapi.auth2.getAuthInstance().signIn();
+      gapi.auth2.getAuthInstance().signIn().error(onClientError);
     }
   }
 
