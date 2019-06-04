@@ -24,7 +24,7 @@
    */
 
   function onErrorClient(e) {
-   showWarning("Error", "<span>Please ensure that you have allowed popups</span><br><br><b>Error message:</b><pre>" + $('<div>').text(JSON.stringify(e, null, 2)).html() + "</pre>"); 
+   showWarning("Error", "<span>Please ensure that you have allowed popups</span><br><br><b>Error message:</b><pre>" + $('<div>').text(JSON.stringify(e, null, 2)).html() + "</pre>"}); 
   }
 
   function initClient() {
