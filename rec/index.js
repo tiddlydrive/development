@@ -15,13 +15,18 @@
    *  On load, called to load the auth2 library and API client library.
    */
   window.handleClientLoad = function() {
-    gapi.load('client:auth2', initClient);
+    gapi.load('client:auth2', {callback:initClient, onError:onErrorClient);
   }
 
   /**
    *  Initializes the API client library and sets up sign-in state
    *  listeners.
    */
+
+  function onErrorClient(e) {
+   showWarning("Error", "<span>Please ensure that you have allowed popups</span><br><br><b>Error message:</b><pre>" + $('<div>').text(JSON.stringify(e, null, 2)).html() + "</pre>"); 
+  }
+
   function initClient() {
     gapi.client.init({
       apiKey: API_KEY,
@@ -78,6 +83,12 @@
 
   function needLegacySrc() {
       return getParameterByName('legacysrc') === 'true' || (typeof InstallTrigger !== 'undefined'); //Is the browser either FireFox or are we forcing legacy support?
+  }
+
+  function showWarning(title, body) {
+    $("#dlg-warning-title").text(title);
+    $("#dlg-warning-body").html(body);
+    $("#dlg-warning").model("open");
   }
 
   // *****************
