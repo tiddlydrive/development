@@ -24,7 +24,16 @@
    */
 
   function onError(e) {
-   showWarning("Error", "<span>Please ensure that you have allowed popups</span><br><br><b>Error message:</b><pre>" + $('<div>').text(JSON.stringify(e, null, 2)).html() + "</pre>"); 
+    var code = "";
+    try {
+      code = e.error;
+    } catch (er) {}
+
+    var span = "";
+    if (0 < code.indexOf("popup")) {
+      span = "Please ensure that you have allowed popups";
+    }
+    showWarning("Error", "<span>" + span + "</span><br><br><b>Error message:</b><pre>" + $('<div>').text(JSON.stringify(e, null, 2)).html() + "</pre>"); 
   }
 
   function initClient() {
@@ -50,7 +59,7 @@
     if (isSignedIn) {
       fetch_file();
     } else {
-      gapi.auth2.getAuthInstance().signIn().error(onError);
+      gapi.auth2.getAuthInstance().signIn().catch(onError);
     }
   }
 
